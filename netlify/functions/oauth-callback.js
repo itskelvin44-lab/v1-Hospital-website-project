@@ -12,7 +12,7 @@ exports.handler = async (event) => {
     
     const CLIENT_ID = process.env.GMAIL_CLIENT_ID;
     const CLIENT_SECRET = process.env.GMAIL_CLIENT_SECRET;
-    const REDIRECT_URI = "https://superb-kheer-62a8ff.netlify.app/.netlify/functions/oauth-callback";
+    const REDIRECT_URI = "https://superb-daifuku-d7ba2a.netlify.app/.netlify/functions/oauth-callback";
     
     const response = await fetch("https://oauth2.googleapis.com/token", {
         method: "POST",

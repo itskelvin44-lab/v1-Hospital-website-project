@@ -11,7 +11,7 @@ exports.handler = async (event) => {
         const oauth2Client = new google.auth.OAuth2(
             process.env.GMAIL_CLIENT_ID,
             process.env.GMAIL_CLIENT_SECRET,
-            'https://superb-kheer-62a8ff.netlify.app/.netlify/functions/oauth-callback'
+            'https://superb-daifuku-d7ba2a.netlify.app/.netlify/functions/oauth-callback'
         );
 
         oauth2Client.setCredentials({
