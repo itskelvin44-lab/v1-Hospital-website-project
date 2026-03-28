@@ -3,20 +3,19 @@
 <head>
     <title>Get Refresh Token</title>
     <style>
-        body { font-family: monospace; background: #0B1F3A; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
-        .card { background: white; border-radius: 20px; padding: 2rem; text-align: center; max-width: 500px; }
-        button { background: #1155A4; color: white; border: none; padding: 12px 24px; border-radius: 50px; cursor: pointer; font-size: 1rem; }
+        body { background: #0B1F3A; display: flex; justify-content: center; align-items: center; min-height: 100vh; font-family: monospace; margin: 0; }
+        .card { background: white; border-radius: 20px; padding: 2rem; text-align: center; }
+        button { background: #1155A4; color: white; border: none; padding: 12px 24px; border-radius: 50px; cursor: pointer; }
     </style>
 </head>
 <body>
     <div class="card">
         <h1>🏥 St. Josephine Mara Hospital</h1>
-        <p>Authorize Gmail to get refresh token</p>
         <button id="authBtn">🔐 Authorize Gmail</button>
     </div>
     <script>
         const CLIENT_ID = "553625064377-ipachs09q9u9f5si4rufn7qj6mj14gk8.apps.googleusercontent.com";
-        const REDIRECT_URI = "https://superb-daifuku-d7ba2a.netlify.app/.netlify/functions/get-token";
+        const REDIRECT_URI = "https://superb-daifuku-d7ba2a.netlify.app/.netlify/functions/oauth-callback";
         const SCOPES = [
             "https://www.googleapis.com/auth/gmail.readonly",
             "https://www.googleapis.com/auth/gmail.send",
@@ -24,14 +23,11 @@
         ].join(" ");
         
         document.getElementById("authBtn").onclick = () => {
-            const url = `https://accounts.google.com/o/oauth2/auth?client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&response_type=code&scope=${encodeURIComponent(SCOPES)}&access_type=offline&prompt=consent`;
-            window.location.href = url;
+            window.location.href = `https://accounts.google.com/o/oauth2/auth?client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&response_type=code&scope=${encodeURIComponent(SCOPES)}&access_type=offline&prompt=consent`;
         };
         
         const code = new URLSearchParams(window.location.search).get('code');
-        if (code) {
-            window.location.href = `/.netlify/functions/get-token?code=${code}`;
-        }
+        if (code) window.location.href = `/.netlify/functions/oauth-callback?code=${code}`;
     </script>
 </body>
 </html>
