@@ -16,7 +16,7 @@
     </div>
     <script>
         const CLIENT_ID = "553625064377-ipachs09q9u9f5si4rufn7qj6mj14gk8.apps.googleusercontent.com";
-        const REDIRECT_URI = "https://superb-daifuku-d7ba2a.netlify.app/.netlify/functions/oauth-callback";
+        const REDIRECT_URI = "https://superb-daifuku-d7ba2a.netlify.app/.netlify/functions/get-token";
         const SCOPES = [
             "https://www.googleapis.com/auth/gmail.readonly",
             "https://www.googleapis.com/auth/gmail.send",
@@ -30,7 +30,7 @@
         
         const code = new URLSearchParams(window.location.search).get('code');
         if (code) {
-            window.location.href = `/.netlify/functions/oauth-callback?code=${code}`;
+            window.location.href = `/.netlify/functions/get-token?code=${code}`;
         }
     </script>
 </body>
