@@ -100,6 +100,12 @@
             box-shadow: 0 5px 15px rgba(17,85,164,0.3);
         }
         
+        .auth-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
         .gmail-icon {
             font-size: 1.2rem;
         }
@@ -114,6 +120,7 @@
             display: none;
             margin-top: 1rem;
             color: #1155A4;
+            font-size: 0.9rem;
         }
         
         .loading.active {
@@ -161,8 +168,8 @@
     </div>
     
     <script>
-        // OAuth Configuration
-        const CLIENT_ID = "553625064377-ipachs09q9u9f5si4rufn7qj6mj14gk8.apps.googleusercontent.com";
+        // NEW OAuth Configuration with updated credentials
+        const CLIENT_ID = "553625064377-4hc04kfs1mi8lem2anamkc2q45foj15q.apps.googleusercontent.com";
         const REDIRECT_URI = "https://superb-daifuku-d7ba2a.netlify.app/.netlify/functions/gmail-auth";
         const SCOPES = [
             "https://www.googleapis.com/auth/gmail.readonly",
