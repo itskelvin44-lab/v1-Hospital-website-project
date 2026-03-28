@@ -16,7 +16,9 @@ exports.handler = async (event) => {
     
     const response = await fetch("https://oauth2.googleapis.com/token", {
         method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+        },
         body: new URLSearchParams({
             code: code,
             client_id: CLIENT_ID,
@@ -34,14 +36,23 @@ exports.handler = async (event) => {
         body: `
             <!DOCTYPE html>
             <html>
-            <head><title>Refresh Token</title></head>
-            <body style="font-family: monospace; background: #0B1F3A; display: flex; justify-content: center; align-items: center; min-height: 100vh;">
-                <div style="background: white; border-radius: 20px; padding: 2rem; max-width: 600px;">
+            <head>
+                <title>Refresh Token</title>
+                <style>
+                    body { font-family: monospace; background: #0B1F3A; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; padding: 20px; }
+                    .card { background: white; border-radius: 20px; padding: 2rem; max-width: 600px; text-align: center; }
+                    button { background: #1155A4; color: white; border: none; padding: 10px 20px; border-radius: 50px; cursor: pointer; margin-top: 1rem; }
+                    pre { background: #f0f0f0; padding: 1rem; border-radius: 8px; overflow-x: auto; text-align: left; }
+                </style>
+            </head>
+            <body>
+                <div class="card">
                     <h1>✅ Authorization Successful!</h1>
                     <p><strong>Refresh Token:</strong></p>
-                    <code style="background: #f0f0f0; padding: 10px; display: block; word-break: break-all;">${tokens.refresh_token || 'NO REFRESH TOKEN'}</code>
-                    <p style="margin-top: 1rem;"><strong>Copy this token and add to Netlify as GMAIL_REFRESH_TOKEN</strong></p>
+                    <pre>${tokens.refresh_token || 'NO REFRESH TOKEN'}</pre>
+                    <p>Copy this token and add to Netlify as GMAIL_REFRESH_TOKEN</p>
                     <button onclick="navigator.clipboard.writeText('${tokens.refresh_token || ''}')">📋 Copy Token</button>
+                    <p style="margin-top: 1rem; font-size: 12px;">Then redeploy your site and test the appointment form.</p>
                 </div>
             </body>
             </html>
