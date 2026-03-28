@@ -8,7 +8,7 @@ exports.handler = async (event) => {
     
     const CLIENT_ID = process.env.GMAIL_CLIENT_ID;
     const CLIENT_SECRET = process.env.GMAIL_CLIENT_SECRET;
-    const REDIRECT_URI = "https://superb-daifuku-d7ba2a.netlify.app/.netlify/functions/oauth-callback";
+    const REDIRECT_URI = "https://superb-daifuku-d7ba2a.netlify.app/.netlify/functions/get-token";
     
     if (!CLIENT_ID || !CLIENT_SECRET) {
         return { statusCode: 500, body: "OAuth credentials not configured in environment variables" };
